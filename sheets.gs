@@ -1,12 +1,15 @@
-function addRow() {
-  var sheet = SpreadsheetApp.getActiveSheet();
-  sheet.appendRow(['Cotton Sweatshirt XL', 'css004']);
-}
 
 function helloWorld() {
   Browser.msgBox('Hello world!');
 }
 
+//add a row of values to the bottom of the active google sheet
+function addRow() {
+  var sheet = SpreadsheetApp.getActiveSheet();
+  sheet.appendRow(['Cotton Sweatshirt XL', 'css004']);
+}
+
+//create a custom menu
 function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu('Bryden Menu')
@@ -15,6 +18,7 @@ function onOpen() {
     .addToUi()
 }
 
+//clear contents for specific cells
 function clearInvoice() {
   var sheet = SpreadsheetApp.getActiveSheet();
   var invoiceNumber = sheet.getRange("B5").clearContent();
@@ -23,6 +27,7 @@ function clearInvoice() {
   var invoiceFrom = sheet.getRange("E6").clearContent(); 
 }
 
+//populating column B with dummy values for testing
 function populate_colb_dummy() {
   var spreadsheet = SpreadsheetApp.getActive();
   spreadsheet.getRange('B1').activate();
@@ -36,12 +41,14 @@ function populate_colb_dummy() {
   spreadsheet.getRange('C2').activate();
 }
 
+//testing - paste column B to A:G
 function pasteAtoG() {
   var spreadsheet = SpreadsheetApp.getActive();
   spreadsheet.getRange('A:G').activate();
   spreadsheet.getRange('B:B').copyTo(spreadsheet.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
 }
 
+//clear contents for a specific sheet!range
 function clearsheet() {
   var spreadsheet = SpreadsheetApp.getActive();
   var range = spreadsheet.getRange("Existing!D2:E");
@@ -49,6 +56,7 @@ function clearsheet() {
   range.clear();
 }
 
+//clear contents for specific sheet/range if user clicks 'YES' to prompt
 function clearsheet_prompt() {
   // Prompt for user to verify before clearing cells
   var ui = SpreadsheetApp.getUi();
@@ -64,21 +72,7 @@ function clearsheet_prompt() {
 }
 }
 
-// function
-// var ui = DocumentApp.getUi();
-// var response = ui.prompt('Getting to know you', 'May I know your name?', ui.ButtonSet.YES_NO);
-
-// // Process the user's response.
-// if (response.getSelectedButton() == ui.Button.YES) {
-//   Logger.log('The user\'s name is %s.', response.getResponseText());
-// } else if (response.getSelectedButton() == ui.Button.NO) {
-//   Logger.log('The user didn\'t want to provide a name.');
-// } else {
-//   Logger.log('The user clicked the close button in the dialog\'s title bar.');
-// }
-
-
-
+//testing - clear range B2:C on active sheet
 function clear_colb() {
   var spreadsheet = SpreadsheetApp.getActive();
   spreadsheet.getRange('B2:C').activate();
